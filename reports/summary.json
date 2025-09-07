@@ -1,0 +1,12 @@
+{
+  "location" : "/Users/ingeintania/Documents/code/pmd-examples",
+  "stat_of_repository" : {
+    "number_of_commits" : 54,
+    "avg_of_num_java_files" : 10.0,
+    "avg_of_num_warnings" : 4.2
+  },
+  "stat_of_warnings" : {
+    "UnusedPrivateField" : 141,
+    "SystemPrintln" : 88
+  }
+}
