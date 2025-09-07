@@ -1,0 +1,10 @@
+{
+  "commit_hash" : "d6f6665f263c374e2d49c5e6e54c10dc91e5a398",
+  "commit_index" : 1,
+  "num_java_files" : 12,
+  "num_warnings" : 7,
+  "stat_of_warnings" : {
+    "UnusedPrivateField" : 4,
+    "SystemPrintln" : 3
+  }
+}
