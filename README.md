@@ -2,10 +2,12 @@
 
 **Run with**
 
+    mvn clean compile
     mvn exec:java -Dexec.mainClass="net.sourceforge.pmd.examples.maven.simpleproject.Main" -Dexec.args="<repoPath> <rulesetPath>"
   
 **Example**
 
+    mvn clean compile
     mvn exec:java -Dexec.mainClass="net.sourceforge.pmd.examples.maven.simpleproject.Main" -Dexec.args="/Users/ingeintania/Documents/code/commons-lang /Users/ingeintania/Documents/code/pmd-repo-miner/ruleset.xml"
 
 **This should generate JSON on each commit commit_[index of commit].json, the format should be as follows:**
