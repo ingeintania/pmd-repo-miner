@@ -4,7 +4,7 @@
 
     mvn exec:java -Dexec.mainClass="net.sourceforge.pmd.examples.maven.simpleproject.Main" -Dexec.args="<repoPath> <rulesetPath>"
   
-Example
+**Example**
 
     mvn exec:java -Dexec.mainClass="net.sourceforge.pmd.examples.maven.simpleproject.Main" -Dexec.args="/Users/ingeintania/Documents/code/commons-lang /Users/ingeintania/Documents/code/pmd-repo-miner/ruleset.xml"
 
