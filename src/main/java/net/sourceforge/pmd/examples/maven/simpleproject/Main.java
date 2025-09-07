@@ -24,7 +24,6 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) throws IOException, NoHeadException, GitAPIException {
-        // Change your target path on repoPath
         if (args.length < 2) {
             System.out.println("Please input <repoPath> <rulesetPath>");
             return;
@@ -60,16 +59,13 @@ public class Main {
 
         Git git = Git.open(repoDir);
         for (RevCommit c : git.log().all().call()) {
-            // Checkout tiap commit
             git.reset().setMode(org.eclipse.jgit.api.ResetCommand.ResetType.HARD).call();
             git.clean().setCleanDirectories(true).setForce(true).call();
             git.checkout().setName(c.getName()).setForced(true).call();
             commitIndex++;
 
-            // Hitung Java files di commit ini
             int javaFiles = countJavaFiles(repoDir);
 
-            // Run PMD di commit ini
             PMDConfiguration cfg = new PMDConfiguration();
             cfg.addInputPath(repoDir.toPath());
             cfg.addRuleSet(rulesetPath);
@@ -87,7 +83,7 @@ public class Main {
                 }
             }
 
-            // Create JSON per commit
+            // Create JSON on each commit
             ObjectMapper mapper = new ObjectMapper();
             ObjectNode rootCommit = mapper.createObjectNode();
             rootCommit.put("commit_hash", c.getName());
@@ -100,11 +96,10 @@ public class Main {
                 statWarnings.put(entry.getKey(), entry.getValue());
             }
 
-            // Simpan file JSON
+            // Save JSON on each commit
             File outFile = new File("reports/commits/commit_" + commitIndex + ".json");
             outFile.getParentFile().mkdirs(); // bikin folder kalau belum ada
             mapper.writerWithDefaultPrettyPrinter().writeValue(outFile, rootCommit);
-
             System.out.println("Generated JSON for commit " + commitIndex + ": " + outFile.getPath());
         }
     }
@@ -144,7 +139,7 @@ public class Main {
             }
         }
 
-        // Create JSON
+        // Create JSON Summary
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode root = mapper.createObjectNode();
         root.put("location", repoDir.getAbsolutePath());
